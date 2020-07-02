@@ -1,8 +1,8 @@
 `include "top.v"
 module testbench();
 
-  wire clk;
-  wire reset;
+  reg clk;
+  reg reset;
 
   wire [31:0] writedata, dataadr;
   wire memwrite;
@@ -13,7 +13,10 @@ module testbench();
   // initialize test
   initial
     begin
-      reset <= 1; # 22; reset <= 0;
+	    $dumpfile("mips.vcd");
+	    reset <= 1; # 22; reset <= 0;
+	    #300;
+	    $finish;
     end
 
   // generate clock to sequence tests
@@ -28,10 +31,10 @@ module testbench();
       if(memwrite) begin
         if(dataadr === 84 & writedata === 7) begin
           $display("Simulation succeeded");
-          $stop;
+          $finish; //estaba en stop, sino el vcd nunca terminaba de salir
         end else if (dataadr !== 80) begin
           $display("Simulation failed");
-          $stop;
+          $finish;
         end
       end
     end

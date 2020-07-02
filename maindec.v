@@ -7,9 +7,7 @@ module maindec(input  [5:0] op,
 
   output reg [8:0] controls;
 
-  assign controls = {regwrite, regdst, alusrc,
-          branch, memwrite,
-          memtoreg, jump, aluop} ;
+  assign  {regwrite, regdst, alusrc,branch, memwrite,memtoreg, jump, aluop} = controls;
 
   always@(*)
   begin
