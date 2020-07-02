@@ -6,7 +6,6 @@
 `include "signext.v"
 `include "alu.v"
 
-
 module datapath(clk,reset,memtoreg,pcsrc, alusrc,regdst,regwrite,jump, alucontrol,zero,pc,instr,aluout, writedata,readdata);
 input clk,reset,memtoreg,pcsrc,alusrc,regdst;
 input regwrite,jump;
