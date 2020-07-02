@@ -5,7 +5,7 @@ module maindec(input  [5:0] op,
                output jump,
                output [1:0] aluop);
 
-  wire [8:0] controls;
+  output reg [8:0] controls;
 
   assign controls = {regwrite, regdst, alusrc,
           branch, memwrite,
