@@ -21,7 +21,7 @@ wire [31:0] result;
 
   //next PC logic
   flopr #(32) pcreg(clk, reset, pcnext, pc);
-  adder       pcadd1(pc, 32'b100, pcplus4);
+  adder       pcadd1(pc, 32'b1, pcplus4); //agrega de 1 en 1, no de 4 a 4
   sl2         immsh(signimm, signimmsh);
   adder       pcadd2(pcplus4, signimmsh, pcbranch);
   mux2 #(32)  pcbrmux(pcplus4, pcbranch, pcsrc,pcnextbr);

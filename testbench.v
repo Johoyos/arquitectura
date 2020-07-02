@@ -14,6 +14,7 @@ module testbench();
   initial
     begin
 	    $dumpfile("mips.vcd");
+	    $dumpvars(0,testbench);
 	    reset <= 1; # 22; reset <= 0;
 	    #300;
 	    $finish;
