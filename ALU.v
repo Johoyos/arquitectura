@@ -1,6 +1,7 @@
 `include "logic.v"
 `include "aritmetica.v"
 `include "mux2.v"
+
 module alu(A,B,AluOp,Result);
     input [31:0] A,B;
     input [3:0] AluOp;
