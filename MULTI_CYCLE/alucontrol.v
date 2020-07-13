@@ -1,10 +1,9 @@
 module alucontrol(AluOp,FnField,AluCtrl);
 
 input [1:0] AluOp;
-input [5:0] FnField; /for R-type instruction
+input [5:0] FnField; //for R-type instruction
 
 output reg [3:0] AluCtrl;
-
 
 always@(AluOp or FnField)begin
 	casex({AluOp,FnField})

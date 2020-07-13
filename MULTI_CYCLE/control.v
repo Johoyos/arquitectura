@@ -128,4 +128,5 @@ PCSource, ALUSrcB, ALUSrcA, RegWrite, RegDst, PCSel, ALUOp);
           end
       endcase
     end
+
 endmodule

@@ -17,4 +17,9 @@ module tb_mips;
 	#6000 $finish;
 	end
 
+	initial begin
+		$dumpfile ( "multicycle_tb_mips.vcd" );
+		$dumpvars;
+	end
+
 endmodule
