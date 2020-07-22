@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-module mux2_1(A,B,selector,Result);
-    input [31:0] A,B;
-    input selector;
-    output [31:0] Result;
-
-    assign Result=(selector)?A:B;
-=======
-module mux2(A,B,selector,result);
-input [31:0] A,B;
+module mux2#(parameter WIDTH=32)(A,B,selector,result);
+input [WIDTH-1:0] A,B;
 input selector;
-output [31:0] result;
+output [WIDTH-1:0] result;
 
-assign result=(selector)?A:B;
->>>>>>> 15c2230d42dbc16202d3413857e751c15df309a9
+assign result=(selector)?B:A;
 
 endmodule

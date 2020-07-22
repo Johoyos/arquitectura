@@ -1,20 +1,32 @@
-module Logic(A,B,AluOp,Result);
+module Logic(A,B,AluOp,Result,zero);
 input [31:0] A,B;
-input [3:0] AluOp;
+input [2:0] AluOp;
 output reg [31:0] Result;
-
+output reg zero;
 always@(*)
 begin
 	case(AluOp)
-	4'b0100:
+	4'b100:
+	begin
 		Result=A&B;
-	4'b0101:
+		zero = 1'b0 ;
+	end
+	4'b101:
+	begin
 		Result=A|B;
-	4'b0110:
-		Result=A^B;
-	4'b0111:
-		Result=~(A|B);
-	endcase
+		zero = 1'b0 ;
+	end
+	4'b110:
+	begin
+		Result= 32'bxxxx; //beq
+		zero = (A==B)?1'b1:1'b0;
+	end
+	4'b111:
+	begin
+		Result= 32'bxxxx; //bneq
+		zero = (A==B)?1'b0:1'b1;
+	end
 
+	endcase
 end
 endmodule

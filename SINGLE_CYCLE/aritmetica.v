@@ -1,22 +1,31 @@
-module arith(A,B,AluOp,Result);
-input [31:0] A,B; 
-input [3:0] AluOp;
+module arith(A,B,AluOp,Result,zero);
+input [31:0] A,B;
+input [2:0] AluOp;
 output reg [31:0] Result;
-
+output reg zero;
 always@(*)
 begin
 	case(AluOp)
-	4'b0000: 
+	4'b010:
+	begin
 		Result=A+B;
-	4'b0010:
+		zero = 1'b0 ;
+	end
+	4'b011:
+	begin
 		Result=A-B;
-	4'b1010:
-		if (B<A) begin
+		zero = 1'b0 ;
+	end
+	4'b001:
+	begin
+		if (A<B) begin
 			Result=32'd1;
 		end
 		else begin
 			Result=32'd0;
 		end
+		zero = 1'b0 ;
+	end
 	endcase
 end
 
